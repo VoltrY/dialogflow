@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Define user type
@@ -48,9 +47,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     checkAuth();
   }, []);
 
-  // Mock login function
+  // Login function with specific credential check
   const login = async (username: string, password: string) => {
-    // In a real app, you would make an API call here
+    // Special case for "enes enesdemirezen"
+    if (username === "enes" && password === "enesdemirezen") {
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Create user for Enes
+      const enesUser: User = {
+        id: '1001',
+        username: 'enes',
+        displayName: 'Enes Demirezen',
+        avatar: `https://avatar.vercel.sh/enes`,
+        status: 'Available',
+      };
+      
+      setUser(enesUser);
+      localStorage.setItem('user', JSON.stringify(enesUser));
+      return;
+    }
+    
+    // Existing mock login functionality for other users
     if (username && password) {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 800));
