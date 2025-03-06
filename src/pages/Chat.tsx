@@ -507,7 +507,7 @@ const Chat = () => {
       setTimeout(() => {
         const replyMessage: MessageProps = {
           id: (Date.now() + 1).toString(),
-          content: 'Thanks for the message! I'll get back to you soon.',
+          content: "Thanks for the message! I'll get back to you soon.",
           sender: {
             id: '1',
             name: 'Alice Johnson',
